@@ -44,11 +44,11 @@ app.post('/register', async (req, res) => {
                 console.error('Error inserting user:', err);
                 return res.status(500).send(err);
             }
-            res.send('User registered');
+            res.send('가입 완료');
         });
     } catch (error) {
         console.error('Error in /register route:', error);
-        res.status(500).send('Internal server error');
+        res.status(500).send('서버 오류');
     }
 });
 
@@ -56,7 +56,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).send('Email and password are required');
+        return res.status(400).send('로그인 오류');
     }
 
     const sql = 'SELECT * FROM user WHERE email = ?';
